@@ -1,0 +1,11 @@
+//
+// Created by Magida on 05-11-2018.
+//
+
+#ifndef THEMAZE_DEFINITIONS_H
+#define THEMAZE_DEFINITIONS_H
+#define CATCH_CONFIG_MAIN
+#ifndef FMT_HEADER_ONLY
+#define FMT_HEADER_ONLY
+#endif
+#endif //THEMAZE_DEFINITIONS_H
