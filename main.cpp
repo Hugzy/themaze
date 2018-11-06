@@ -11,7 +11,7 @@
 
 using namespace json11;
 
-bool read_from_file(){
+Json read_from_file() {
     std::ifstream in;
     in.open("map.json");
     std::stringstream sstr;
@@ -20,43 +20,40 @@ bool read_from_file(){
     auto err = std::string{"error parsing"};
     auto json = Json::parse(json_str, err);
     fmt::print("value1 is: {}", json["key1"].string_value());
-    return true;
+    return json;
 }
 
-bool write_to_file(){
+bool write_to_file(const std::string &map, const std::string &file = "") {
     std::ofstream out;
     out.open("map.json");
-    Json my_json = Json::object {
-            { "key1", "value1" },
-            { "key2", false },
-            { "key3", Json::array { 1, 2, 3 }},
-            { "key 4", Json::object {
-                    {"key5", "value2"},
-                    {"key6", true},
-                    {"key7", Json::array{4,5,6}}
-            }
-            }
-    };
-    std::string json_str = my_json.dump();
-    fmt::print("json: {} \n", json_str);
-    out << json_str;
+    fmt::print("json: {} \n", map);
+    out << map;
     out.close();
     return true;
 }
 
-std::string s(){
+bool write_to_file(const Json &map, const std::string &file = "") {
+    write_to_file(map.dump(), file);
+}
+
+
+std::string s() {
     return fmt::format("The answer is {}", 42);
 }
 
-TEST_CASE("FMT", "CONSTRUCTOR"){
+TEST_CASE("FMT", "CONSTRUCTOR") {
     REQUIRE(s() == "The answer is 42");
 }
 
-TEST_CASE("WRITE TO FILE", "[OUT]"){
-    REQUIRE(write_to_file());
+TEST_CASE("WRITE TO FILE", "[OUT]") {
+    Json my_json = Json::object{
+            {"key1", "value1"},
+            {"key2", false},
+            {"key3", Json::array{1, 2, 3}},
+    };
+    write_to_file(my_json, "map.json");
 }
 
-TEST_CASE("READ FROM FILE", "[IN]"){
-    REQUIRE(read_from_file());
+TEST_CASE("READ FROM FILE", "[IN]") {
 }
 
