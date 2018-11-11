@@ -3,4 +3,4 @@ project(themaze)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(themaze main.cpp include/catch2/catch.hpp definitions.h include/json11/json11.cpp include/json11/json11.hpp)
+add_executable(themaze main.cpp include/catch2/catch.hpp definitions.h include/json11/json11.cpp include/json11/json11.hpp util/json_routine.cpp util/json_routine.h)
