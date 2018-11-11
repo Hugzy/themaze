@@ -10,5 +10,5 @@
 json11::Json read_from_file();
 const bool write_to_file(const std::string &map, const std::string &file = "");
 const bool write_to_file(const json11::Json &map, const std::string &file = "");
-
+const bool append_to_file(const json11::Json &map, const std::string &file = "");
 #endif //THEMAZE_JSON_ROUTINE_H

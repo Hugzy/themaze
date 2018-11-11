@@ -14,13 +14,14 @@ using namespace json11;
 
 TEST_CASE("WRITE TO FILE", "[OUT]") {
     Json my_json = Json::object{
-            {"key1", "value1"},
-            {"key2", false},
-            {"key3", Json::array{1, 2, 3}},
+            {"key11", "value1"},
+            {"key22", false},
+            {"key33", Json::array{1, 2, 3}},
     };
-    write_to_file(my_json, "map.json");
+    append_to_file(my_json, "map.json");
 }
 
 TEST_CASE("READ FROM FILE", "[IN]") {
+    read_from_file();
 }
 

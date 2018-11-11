@@ -30,3 +30,15 @@ const bool write_to_file(const std::string &map, const std::string &file) {
 const bool write_to_file(const Json &map, const std::string &file) {
     write_to_file(map.dump(), file);
 }
+
+const bool append_to_file(const Json &map, const std::string &file){
+    auto json = read_from_file();
+    auto items = json.object_items();
+    for(auto pair : map.object_items()){
+        items.insert(pair);
+    }
+
+    auto jjson = Json::object{items};
+    write_to_file(jjson);
+}
+
